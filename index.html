@@ -22,6 +22,22 @@
         </div>
     </div>
 
+    <div class="card">
+        <h2>Daily Check-in</h2>
+    
+        <label>Mood</label>
+        <select id="moodSelect">
+            <option value="happy">😊 Happy</option>
+            <option value="neutral">😐 Neutral</option>
+            <option value="sad">😔 Sad</option>
+        </select>
+    
+        <label>Focus Level: <span id="focusValue">5</span></label>
+        <input type="range" min="1" max="10" value="5" id="focusRange">
+    
+        <button id="addEntryBtn">Add Entry</button>
+    </div>
+
     <script src="./js/script.js"></script>
 </body>
 
