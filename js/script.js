@@ -33,3 +33,23 @@ function renderHistory() {
 
 document.getElementById('addEntryBtn').addEventListener('click', addEntry);
 renderHistory();
+
+let chart;
+
+function renderChart() {
+  const ctx = document.getElementById('chart');
+
+  if (chart) chart.destroy();
+
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: entries.map(e => e.date),
+      datasets: [{
+        data: entries.map(e => e.focus),
+        borderColor: '#5b7cfa',
+        tension: 0.4
+      }]
+    }
+  });
+}
