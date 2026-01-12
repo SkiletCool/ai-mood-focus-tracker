@@ -12,9 +12,9 @@
 }
 
 body {
+    margin: 0;
     background: var(--bg);
     color: var(--text);
-    margin: 0;
 }
 
 .app-container {
@@ -30,4 +30,15 @@ body {
     padding: 20px;
     margin-top: 20px;
     box-shadow: var(--shadow);
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
 }

@@ -13,40 +13,41 @@
 
     <div class="app-container">
         <h1>🧠 AI Mood / Focus Tracker</h1>
-    
+
+        <!-- Daily Input -->
         <div class="card">
             <h2>Daily Check-in</h2>
+
+            <label>Mood</label>
+            <select id="moodSelect">
+                <option value="happy">😊 Happy</option>
+                <option value="neutral">😐 Neutral</option>
+                <option value="sad">😔 Sad</option>
+            </select>
+
+            <label>Focus Level: <span id="focusValue">5</span></label>
+            <input type="range" min="1" max="10" value="5" id="focusRange">
+
+            <button id="addEntryBtn">Add Entry</button>
         </div>
-    
+
+        <!-- AI Advice -->
         <div class="card">
             <h2>AI Advice</h2>
+            <p id="aiAdvice">Track your mood to receive advice.</p>
         </div>
-    </div>
 
-    <div class="card">
-        <h2>Daily Check-in</h2>
-    
-        <label>Mood</label>
-        <select id="moodSelect">
-            <option value="happy">😊 Happy</option>
-            <option value="neutral">😐 Neutral</option>
-            <option value="sad">😔 Sad</option>
-        </select>
-    
-        <label>Focus Level: <span id="focusValue">5</span></label>
-        <input type="range" min="1" max="10" value="5" id="focusRange">
-    
-        <button id="addEntryBtn">Add Entry</button>
-    </div>
+        <!-- Chart -->
+        <div class="card">
+            <h2>Progress Chart</h2>
+            <canvas id="chart"></canvas>
+        </div>
 
-    <div class="card">
-        <h2>History</h2>
-        <ul id="historyList"></ul>
-    </div>
-
-    <div class="card">
-        <h2>Progress Chart</h2>
-        <canvas id="chart"></canvas>
+        <!-- History -->
+        <div class="card">
+            <h2>History</h2>
+            <ul id="historyList"></ul>
+        </div>
     </div>
 
     <script src="./js/script.js"></script>

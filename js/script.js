@@ -1,26 +1,41 @@
 console.log('App initialized');
+
 const focusRange = document.getElementById('focusRange');
 const focusValue = document.getElementById('focusValue');
+const historyList = document.getElementById('historyList');
+const aiAdvice = document.getElementById('aiAdvice');
+
+const STORAGE_KEY = 'moodEntries';
+let entries = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+let chart;
+
+/* ===== UI ===== */
 
 focusRange.addEventListener('input', () => {
   focusValue.textContent = focusRange.value;
 });
 
-const STORAGE_KEY = 'moodEntries';
-const historyList = document.getElementById('historyList');
-let entries = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+/* ===== Core Logic ===== */
 
 function addEntry() {
+  const mood = document.getElementById('moodSelect').value;
+  const focus = Number(focusRange.value);
+
   const entry = {
     date: new Date().toLocaleDateString(),
-    mood: document.getElementById('moodSelect').value,
-    focus: focusRange.value
+    mood,
+    focus
   };
 
   entries.push(entry);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+
   renderHistory();
+  renderChart();
+  updateAIAdvice(mood);
 }
+
+/* ===== Rendering ===== */
 
 function renderHistory() {
   historyList.innerHTML = '';
@@ -30,11 +45,6 @@ function renderHistory() {
     historyList.appendChild(li);
   });
 }
-
-document.getElementById('addEntryBtn').addEventListener('click', addEntry);
-renderHistory();
-
-let chart;
 
 function renderChart() {
   const ctx = document.getElementById('chart');
@@ -46,10 +56,38 @@ function renderChart() {
     data: {
       labels: entries.map(e => e.date),
       datasets: [{
+        label: 'Focus Level',
         data: entries.map(e => e.focus),
         borderColor: '#5b7cfa',
+        backgroundColor: 'rgba(91,124,250,0.2)',
         tension: 0.4
       }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      }
     }
   });
 }
+
+/* ===== AI Advice ===== */
+
+function updateAIAdvice(mood) {
+  const adviceMap = {
+    happy: 'You have great energy today. Do deep work!',
+    neutral: 'Stay consistent and focus on small wins.',
+    sad: 'Take breaks and reduce cognitive load.'
+  };
+
+  aiAdvice.textContent = adviceMap[mood];
+}
+
+/* ===== Init ===== */
+
+document.getElementById('addEntryBtn')
+  .addEventListener('click', addEntry);
+
+renderHistory();
+renderChart();
