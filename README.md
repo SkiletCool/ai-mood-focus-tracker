@@ -147,12 +147,4 @@ Ideal for **Junior → Middle Frontend portfolio**.
 
 ---
 
-## 👤 Author
-
-Created by **SkiletCool**
-
-> Frontend Developer in training, focused on clean UI, logic, and scalable architecture.
-
----
-
 ⭐ If you like this project — give it a star!
