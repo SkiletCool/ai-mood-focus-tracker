@@ -1,4 +1,33 @@
+:root {
+    --bg: #f4f7fb;
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --text: #222;
+    --accent: #5b7cfa;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
 body {
+    background: var(--bg);
+    color: var(--text);
     margin: 0;
-    font-family: sans-serif;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: var(--shadow);
 }
